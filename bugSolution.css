@@ -1,0 +1,26 @@
+/* Corrected CSS */
+
+/* Always include units in calc() expressions */
+.element {
+  width: calc(100% - 10px);
+  /* Correctly handles subtraction with px units */
+  height: calc(50vh - 2rem);  /* Correctly handles subtraction with vh and rem units */
+}
+
+/* Ensure proper order of operations with parentheses if necessary*/
+.element2 {
+  width: calc((100% - 20px) / 2);
+  /* Uses parentheses to enforce the desired order of operations */
+}
+
+/*Avoid mixing incompatible units within single calc()*/
+.element3 {
+  /*Incorrect: mixing percentages and pixels directly in a single calc is unreliable */
+  /*width: calc(50% + 20px);*/
+  /*Corrected: Using variables or separate calculations is recommended*/
+  width: calc(var(--base-width) + 20px);
+}
+:root {
+  --base-width: 50%;
+}
+/*Always test thoroughly to ensure correct results across different browsers and devices*/
